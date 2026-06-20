@@ -60,7 +60,7 @@ Automated Word document generation for the HECA research paper:
 - **`fix_dashes.py`** — Typography preprocessing (em-dashes, en-dashes, smart quotes)
 
 ### 4. Face Privacy Module (Separate Repo)
-Worker faces in all construction site images are anonymized before analysis using the companion **[PrivacyBlur](https://github.com/piewsh/Face-Privacy-Blur-Model)** pipeline — an ensemble of YOLOv8 + BlazeFace + OpenCV DNN face detectors.
+Worker faces in all construction site images are anonymized before analysis using the companion **[PrivacyBlur](https://github.com/piewsh/Privacy-Blur-Model)** pipeline — an ensemble of YOLOv8 + BlazeFace + OpenCV DNN face detectors.
 
 ---
 
@@ -132,7 +132,7 @@ Due to confidentiality and worker privacy requirements, the following are **not 
 
 - **Raw construction site images** (489+ photos from IIT Madras site)
 - **Full image datasets** (320 unique + 55 IRR analysis images)
-- **Worker photographs** — all faces anonymized via [PrivacyBlur](https://github.com/piewsh/Face-Privacy-Blur-Model)
+- **Worker photographs** — all faces anonymized via [PrivacyBlur](https://github.com/piewsh/Privacy-Blur-Model)
 - **Research paper drafts** (`.docx`) and internal reports
 - **Image thumbnails** (~422 processed WebP files used by the dashboard)
 - **Hero background image** (26MB site photo)
@@ -143,7 +143,7 @@ The complete **analysis code**, **dashboard application**, **generated figures**
 
 ## 🔗 Related Repositories
 
-- [**Face-Privacy-Blur-Model**](https://github.com/piewsh/Face-Privacy-Blur-Model) — Ensemble face/text anonymization pipeline used for privacy compliance
+- [**Privacy-Blur-Model**](https://github.com/piewsh/Privacy-Blur-Model) — Ensemble face/text anonymization pipeline used for privacy compliance
 
 ---
 
