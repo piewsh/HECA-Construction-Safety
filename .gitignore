@@ -1,0 +1,17 @@
+# Private data
+*.DS_Store
+__pycache__/
+*.pyc
+
+# Raw image datasets (not included — see README)
+website/320 Unique Images for Analysis/
+website/55 Images for HECA Analysis/
+website/RAW IMAGES (489)/
+website/thumbnails/
+website/walkthrough_assets/
+website/hero-bg.png
+site_images/
+
+# Research paper drafts
+*.docx
+report/

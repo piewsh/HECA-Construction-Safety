@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="HECA Dashboard: Interactive High-Energy Control Assessment analysis of 320 construction site images. Identify hazards, evaluate direct controls, and track safety performance across project lifecycle stages.">
+  <title>HECA Dashboard: High-Energy Control Assessment</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="top-nav" id="topNav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand">
+        <div class="nav-logo">H</div>
+        <div class="nav-title">HECA <span>Dashboard</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#analysis-selector">Analysis</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#data-section">Data</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Construction Safety Research
+      </div>
+      <h1>High-Energy Control<br><span class="highlight">Assessment Dashboard</span></h1>
+      <p>
+        A proactive safety methodology that identifies high-energy hazards on construction
+        sites and evaluates whether Direct Controls, engineered physical barriers
+        are in place to prevent serious injuries without relying on human behavior.
+      </p>
+      <div class="hero-actions">
+        <a href="#analysis-selector" class="btn btn-amber">Explore Analysis</a>
+        <a href="#analytics" class="btn btn-outline">View Analytics</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-value" id="heroImages">320</div>
+          <div class="hero-stat-label">Total Images</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value" id="heroHazards">1,583</div>
+          <div class="hero-stat-label">Total Hazards</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value" id="heroHighEnergy">1,254</div>
+          <div class="hero-stat-label">High-Energy Hazards</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value" id="heroScore">1.83%</div>
+          <div class="hero-stat-label">Safety Score</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="app-container">
+
+    <!-- ═══════════════ HECA INFO ═══════════════ -->
+    <section class="heca-info-section" id="heca-info">
+      <div class="heca-info-header">
+        <h2>What is HECA?</h2>
+        <p>The High-Energy Control Assessment is a structured methodology for evaluating
+          construction site safety beyond traditional checklists</p>
+      </div>
+
+      <div class="info-cards-grid">
+        <div class="info-card">
+          <div class="info-card-icon">DC</div>
+          <h3>Direct Controls</h3>
+          <p>Engineered barriers that physically prevent energy release, guardrails,
+            lockout/tagout systems, shoring, and anchored lifelines. Not PPE, training,
+            or signage.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">HE</div>
+          <h3>High-Energy Hazards</h3>
+          <p>Hazards capable of causing serious injury or death: falls above 4 ft,
+            excavations beyond 5 ft, suspended loads, and any energy source exceeding
+            the 500 ft-lb threshold.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">%</div>
+          <h3>HECA Exposure Rate</h3>
+          <p>The percentage of high-energy hazard observations without a Direct Control
+            present, quantifying a project's overall exposure to serious injury risk
+            at any point in time.</p>
+        </div>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h4>Identify Energy Sources</h4>
+          <p>Categorize each hazard by energy type: Gravity, Mechanical, Electrical, Motion,
+            Pressure, Chemical, or Thermal</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h4>Assess Energy Level</h4>
+          <p>Determine if the energy exceeds the serious-injury threshold (High vs. Low
+            energy classification)</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h4>Evaluate Direct Controls</h4>
+          <p>Check if a physical, engineered barrier is present that stops the energy
+            from reaching a worker</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h4>Classify Outcome</h4>
+          <p>Success = Direct Control present. Exposure = absent. The HECA Score is the
+            overall exposure rate</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════ ANALYSIS SELECTOR ═══════════════ -->
+    <section class="analysis-selector-section" id="analysis-selector">
+      <div class="section-header" style="justify-content: center; text-align: center;">
+        <div>
+          <h2 class="section-title">Select Analysis</h2>
+          <p class="section-subtitle">Two complementary analyses were conducted on the HECA dataset</p>
+        </div>
+      </div>
+
+      <div class="analysis-cards">
+        <div class="analysis-card analysis-card-irr active" id="selectIRR" data-analysis="irr">
+          <div class="analysis-card-accent"></div>
+          <div class="analysis-card-body">
+            <div class="analysis-card-icon">A1</div>
+            <div class="analysis-card-info">
+              <h3>Analysis 1: Comparison Study</h3>
+              <p>55 images reviewed by three independent researchers with per-researcher comparison and difference analysis.</p>
+              <div class="analysis-card-meta">
+                <span class="analysis-meta-chip"><strong>55</strong> Images</span>
+                <span class="analysis-meta-chip"><strong>3</strong> Researchers</span>
+                <span class="analysis-meta-chip">Comparison</span>
+              </div>
+            </div>
+          </div>
+          <div class="analysis-card-check">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+        </div>
+
+        <div class="analysis-card analysis-card-main" id="selectMain" data-analysis="main">
+          <div class="analysis-card-accent"></div>
+          <div class="analysis-card-body">
+            <div class="analysis-card-icon">A2</div>
+            <div class="analysis-card-info">
+              <h3>Analysis 2: Main Dataset</h3>
+              <p>320 images analyzed independently by two researchers for comprehensive HECA assessment.</p>
+              <div class="analysis-card-meta">
+                <span class="analysis-meta-chip"><strong>320</strong> Images</span>
+                <span class="analysis-meta-chip"><strong>2</strong> Researchers</span>
+                <span class="analysis-meta-chip">Main Study</span>
+              </div>
+            </div>
+          </div>
+          <div class="analysis-card-check">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════ ANALYSIS CONTENT (toggled) ═══════════════ -->
+    <div id="analysisContent">
+
+      <!-- ── Analysis Header Banner ── -->
+      <div class="analysis-banner" id="analysisBanner">
+        <div class="analysis-banner-inner">
+          <div class="analysis-banner-icon" id="bannerIcon">A1</div>
+          <div class="analysis-banner-text">
+            <h3 id="bannerTitle">Analysis 1: Comparison Study</h3>
+            <p id="bannerSubtitle">55 images &middot; 3 Researchers &middot; Inter-Rater Comparison</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── IRR Researcher Comparison (only visible for Analysis 1) ── -->
+      <section class="irr-comparison-section" id="irrComparison" style="display:none;">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Researcher Comparison</h2>
+            <p class="section-subtitle">Per-researcher hazard identification and HECA scoring across 55 images</p>
+          </div>
+        </div>
+        <div class="irr-summary-cards" id="irrSummaryCards">
+          <!-- Filled by JS -->
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- IRR Comparison Charts -->
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Comparison Charts</h2>
+            <p class="section-subtitle">Visual comparison of hazard identification and scoring differences between researchers</p>
+          </div>
+        </div>
+        <div class="charts-grid" id="irrChartsGrid">
+          <div class="chart-card">
+            <div class="chart-card-title">Hazards Identified per Image (by Researcher)</div>
+            <canvas id="irrChartHazards"></canvas>
+          </div>
+          <div class="chart-card">
+            <div class="chart-card-title">HECA Score per Image (by Researcher)</div>
+            <canvas id="irrChartHecaScores"></canvas>
+          </div>
+          <div class="chart-card">
+            <div class="chart-card-title">Total Hazards by Researcher</div>
+            <canvas id="irrChartTotalHazards"></canvas>
+          </div>
+          <div class="chart-card">
+            <div class="chart-card-title">Success vs Exposure by Researcher</div>
+            <canvas id="irrChartSuccessExposure"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── OVERVIEW / KPIs ── -->
+      <section class="dashboard-section" id="overview">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title" id="overviewTitle">Project Overview</h2>
+            <p class="section-subtitle" id="overviewSubtitle">Key safety metrics across 55 construction site images</p>
+          </div>
+        </div>
+        <div class="kpi-grid" id="kpiGrid">
+          <div class="kpi-card">
+            <div class="kpi-icon">IMG</div>
+            <div class="kpi-value" id="kpiImages">--</div>
+            <div class="kpi-label">Total Images</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon">HAZ</div>
+            <div class="kpi-value" id="kpiHazards">--</div>
+            <div class="kpi-label">Total Hazards</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon">HE</div>
+            <div class="kpi-value" id="kpiHighEnergy">--</div>
+            <div class="kpi-label">High-Energy Hazards</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon">EXP</div>
+            <div class="kpi-value" id="kpiHecaScore">--</div>
+            <div class="kpi-label">Safety Score</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon">DC</div>
+            <div class="kpi-value" id="kpiDirectControl">--</div>
+            <div class="kpi-label">Direct Control Rate</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ── IMAGE GALLERY ── -->
+      <section class="dashboard-section" id="gallery">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title" id="galleryTitle">Image Gallery</h2>
+            <p class="section-subtitle" id="gallerySubtitle">Browse and analyze construction site images with hazard data</p>
+          </div>
+          <div class="view-toggle">
+            <button class="view-btn active" data-view="gallery" id="viewGallery">Gallery</button>
+            <button class="view-btn" data-view="table" id="viewTable">Table</button>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-bar">
+          <div class="filter-row">
+            <div class="search-box">
+              <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+              <input type="text" id="searchInput" placeholder="Search by image ID, activity, or hazard description...">
+            </div>
+            <select class="filter-select" id="filterEnergy">
+              <option value="">All Energy Types</option>
+            </select>
+            <select class="filter-select" id="filterSeverity">
+              <option value="">All Severity</option>
+              <option value="High">High Energy</option>
+              <option value="Low">Low Energy</option>
+            </select>
+            <select class="filter-select" id="filterControl">
+              <option value="">Direct Control</option>
+              <option value="Yes">Present</option>
+              <option value="No">Absent</option>
+            </select>
+            <button class="clear-filters-btn" id="clearFilters">Clear All</button>
+            <span class="filter-count" id="filterCount"></span>
+          </div>
+        </div>
+
+        <!-- Stage Tabs -->
+        <div class="stage-tabs" id="stageTabs">
+          <button class="stage-tab active" data-stage="">All Stages <span class="count" id="countAll">--</span></button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" id="galleryGrid"></div>
+        <div class="no-results" id="noResults" style="display:none">
+          <h3>No images match your filters</h3>
+          <p>Try adjusting your search or filter criteria</p>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination"></div>
+
+        <!-- Data Table View (inline toggle) -->
+        <div class="data-table-section" id="dataTableView" style="display:none">
+          <div class="data-table-wrapper">
+            <table class="data-table" id="dataTable">
+              <thead>
+                <tr>
+                  <th data-sort="imageId">Image ID <span class="sort-icon">&#8597;</span></th>
+                  <th data-sort="activityType">Activity <span class="sort-icon">&#8597;</span></th>
+                  <th data-sort="hazardNo"># <span class="sort-icon">&#8597;</span></th>
+                  <th data-sort="hazardDescription">Hazard Description <span class="sort-icon">&#8597;</span></th>
+                  <th data-sort="energyType">Energy Type <span class="sort-icon">&#8597;</span></th>
+                  <th data-sort="directControl">Direct Control <span class="sort-icon">&#8597;</span></th>
+                  <th data-sort="severity">High/Low Energy Hazard <span class="sort-icon">&#8597;</span></th>
+                  <th>Success</th>
+                  <th>Exposure</th>
+                </tr>
+              </thead>
+              <tbody id="dataTableBody"></tbody>
+            </table>
+          </div>
+          <div class="pagination" id="tablePagination"></div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ═══════════════ ANALYTICS ═══════════════ -->
+      <section class="analytics-section" id="analytics">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title" id="analyticsTitle">Analytics</h2>
+            <p class="section-subtitle" id="analyticsSubtitle">Hazard distributions and safety performance metrics</p>
+          </div>
+        </div>
+
+        <div class="charts-grid" id="chartsGrid">
+          <div class="chart-card">
+            <div class="chart-card-title">Energy Type Distribution</div>
+            <canvas id="chartEnergy"></canvas>
+          </div>
+          <div class="chart-card">
+            <div class="chart-card-title">Hazards by Lifecycle Stage</div>
+            <canvas id="chartStage"></canvas>
+          </div>
+          <div class="chart-card">
+            <div class="chart-card-title">HECA Exposure Rate by Stage</div>
+            <canvas id="chartHeca"></canvas>
+          </div>
+          <div class="chart-card">
+            <div class="chart-card-title">Direct Control Analysis</div>
+            <canvas id="chartControl"></canvas>
+          </div>
+        </div>
+
+        <div class="section-header" style="margin-top: 48px;">
+          <div>
+            <h2 class="section-title">Research Figures</h2>
+            <p class="section-subtitle">Detailed analysis charts from the HECA study</p>
+          </div>
+        </div>
+        <div class="graphs-grid" id="graphsGrid"></div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ═══════════════ FULL DATA TABLE ═══════════════ -->
+      <section class="data-table-section" id="data-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title" id="dataTitle">Complete Hazard Dataset</h2>
+            <p class="section-subtitle" id="dataSubtitle">All hazard observations, sortable and searchable</p>
+          </div>
+        </div>
+        <div class="data-table-wrapper">
+          <table class="data-table" id="fullDataTable">
+            <thead>
+              <tr>
+                <th data-sort="imageId" data-table="full">Image ID <span class="sort-icon">&#8597;</span></th>
+                <th data-sort="activityType" data-table="full">Activity <span class="sort-icon">&#8597;</span></th>
+                <th data-sort="hazardNo" data-table="full"># <span class="sort-icon">&#8597;</span></th>
+                <th data-sort="hazardDescription" data-table="full">Hazard Description <span class="sort-icon">&#8597;</span></th>
+                <th data-sort="energyType" data-table="full">Energy Type <span class="sort-icon">&#8597;</span></th>
+                <th data-sort="directControl" data-table="full">Direct Control <span class="sort-icon">&#8597;</span></th>
+                <th data-sort="severity" data-table="full">High/Low Energy Hazard <span class="sort-icon">&#8597;</span></th>
+                <th>Success</th>
+                <th>Exposure</th>
+              </tr>
+            </thead>
+            <tbody id="fullDataTableBody"></tbody>
+          </table>
+        </div>
+        <div class="pagination" id="fullTablePagination"></div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-pro">
+      <div class="footer-bottom" style="border-top: none; padding: 28px 32px;">
+        <div class="footer-bottom-inner">
+          <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8);">
+            HECA Dashboard &nbsp;·&nbsp; High-Energy Control Assessment &nbsp;·&nbsp; IIT Madras, Department of Civil Engineering
+          </p>
+          <p style="font-size: 0.8rem; color: var(--text-muted, #94a3b8);">&copy; 2026 HECA Research Team, IIT Madras. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ═══ Image Detail Modal ═══ -->
+  <div class="modal-backdrop" id="imageModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h2 class="modal-title" id="modalTitle">--</h2>
+          <span class="image-card-stage" id="modalStage"></span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center">
+          <div class="modal-nav">
+            <button class="modal-nav-btn" id="modalPrev">&#8592; Prev</button>
+            <button class="modal-nav-btn" id="modalNext">Next &#8594;</button>
+          </div>
+          <button class="modal-close" id="modalClose">&#10005;</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-image-container">
+          <img id="modalImage" src="" alt="Construction site image">
+        </div>
+
+        <!-- Researcher tabs (visible only in Analysis 1) -->
+        <div class="researcher-tabs" id="researcherTabs" style="display:none;">
+          <button class="researcher-tab active" data-researcher="RA">Researcher A (RA)</button>
+          <button class="researcher-tab" data-researcher="RP">Researcher B (RP)</button>
+          <button class="researcher-tab" data-researcher="RS">Researcher C (RS)</button>
+        </div>
+
+        <div class="analysis-section-title" id="analysisSectionTitle">HECA Analysis</div>
+        <div class="analysis-table-wrapper">
+          <table class="analysis-table">
+            <thead>
+              <tr>
+                <th id="modalColResearcher" style="display:none;">Researcher</th>
+                <th>#</th>
+                <th>Activity</th>
+                <th>Hazard Description</th>
+                <th>Energy Type</th>
+                <th>Direct Control</th>
+                <th>Controls Observed</th>
+                <th>Controls Needed</th>
+                <th>Comments</th>
+                <th>Success</th>
+                <th>Exposure</th>
+              </tr>
+            </thead>
+            <tbody id="modalTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Graph Zoom Modal -->
+  <div class="modal-backdrop" id="graphModal">
+    <div class="modal-content" style="max-width:900px;">
+      <div class="modal-header">
+        <h2 class="modal-title" id="graphModalTitle"></h2>
+        <button class="modal-close" id="graphModalClose">&#10005;</button>
+      </div>
+      <div class="modal-body" style="padding:0 28px 28px;">
+        <img id="graphModalImage" class="graph-modal-img" src="" alt="Analysis graph">
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="irr_researcher_data.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
